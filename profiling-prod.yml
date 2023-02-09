@@ -1,0 +1,29 @@
+spring.main.banner-mode: off
+spring:
+  config:
+    import: configserver:http://configserver:8071
+  jpa:
+    hibernate:
+      ddl-auto: update
+      generate-ddl: false
+      naming.physical-strategy: org.hibernate.boot.model.naming.CamelCaseToUnderscoresNamingStrategy
+
+  datasource:
+    url: jdbc:postgresql://postgres:5432/vivamartdb
+    username: postgres
+    password: postgres
+    driver-class-name: org.postgresql.Driver
+    hikari.connection-timeout: 60000
+    hikari.maximum-pool-size: 5
+
+postgresql:
+  dataSourceClass: org.postgresql.ds.PGSimpleDataSource
+  driverClass: org.postgresql.Driver
+  database: agrikonetworkdb
+  host: postgres
+  port: 5432
+  user: postgres
+  password: postgres
+
+server:
+  port: 8081
